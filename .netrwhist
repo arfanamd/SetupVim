@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/data/data/com.termux/files/usr/tmp/example/Guess/src/guess'
+let g:netrw_dirhist_6='/data/data/com.termux/files/home/POS_SELL/pos_cash'
+let g:netrw_dirhist_5='/data/data/com.termux/files/home/Guess_card_game/remake_2'
+let g:netrw_dirhist_4='/data/data/com.termux/files/home/Guess_card_game'
+let g:netrw_dirhist_3='/data/data/com.termux/files/home/Guess_card_game/remake_2'
+let g:netrw_dirhist_2='/data/data/com.termux/files/home/Guess_card_game'
+let g:netrw_dirhist_1='/data/data/com.termux/files/usr/tmp/fix'
+let g:netrw_dirhist_0='/data/data/com.termux/files/usr/share/fzf'
+let g:netrw_dirhist_9='/data/data/com.termux/files/usr/share/vim/vim81/spell'
+let g:netrw_dirhist_8='/data/data/com.termux/files/usr/share/fzf'
