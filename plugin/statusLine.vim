@@ -93,7 +93,7 @@ nnoremap ,d :exe 'dli /' . expand("<cword>") . '/'<CR>
 nnoremap <silent> <F2> mp:let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>'pzz
 nnoremap <silent> <F3> :source ~/.vim/plugin/statusLine.vim<CR>
 nnoremap <silent> <F11> :call CleanScreenDisplay()<CR><C-l>
-nnoremap <silent> ,skl :call fzf#run({'sink':'.!cat', 'source':'dir -D1 $HOME/.vim/skeleton/', 'down':'25%', 'options':'-e --border=horizontal --prompt="search: " --no-info --no-unicode --no-color --no-bold --layout=reverse-list'})<CR>M
+nnoremap <silent> ,skl :call fzf#run({'sink':'.!cat', 'source':'find $HOME/.vim/skeleton/ -name "*.template"', 'down':'25%', 'options':'-e --border=horizontal --prompt="search: " --no-info --no-unicode --no-color --no-bold --layout=reverse-list'})<CR>M
 nnoremap <silent> ,dmk :call setqflist([], 'f')<CR>
 nnoremap <silent> ,omk :copen<CR>
 nnoremap <silent> ,cmk :cclose<CR>
