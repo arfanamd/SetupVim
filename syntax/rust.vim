@@ -220,7 +220,7 @@ hi rustSigil         cterm=italic,bold
 hi rustModPathSep    cterm=none
 hi rustIdentifier    cterm=none
 
-set expandtab
+hi def link rustSelf          rustSigil
 " }}}
 " Default highlighting {{{1
 hi def link rustDecNumber       rustNumber
@@ -247,7 +247,6 @@ hi def link rustBoolean       Boolean
 hi def link rustEnum          rustType
 hi def link rustEnumVariant   rustConstant
 hi def link rustConstant      Constant
-hi def link rustSelf          Constant
 hi def link rustFloat         rustNumber
 hi def link rustArrowCharacter rustOperator
 hi def link rustOperator      Operator
