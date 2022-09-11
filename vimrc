@@ -29,6 +29,7 @@ set showmatch
 # Using my ViWS plugin instead
 set noruler
 set laststatus=2
+set tabline=%!VimWorkSpace()
 # Indentation
 set nosmarttab
 set tabstop=4
@@ -56,7 +57,7 @@ nnoremap ,b :ls<cr>:buff
 nnoremap ,q :confirm q<cr>
 nnoremap ,Q :confirm qa<cr>
 nnoremap <silent> <F2> mp:let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>'pzz
-nnoremap <silent> <F3> :call fzf#run({'sink':'.!cat', 'source':'ls -1 $HOME/.vim/skeleton/', 'down':'20%', 'options':'-e --layout=reverse-list --border=none --no-info --color=16'})
+nnoremap <silent> <F3> :call fzf#run({'sink':'.!cat', 'source':'find $HOME/.vim/skeleton/*', 'down':'20%', 'options':'-e --layout=reverse-list --border=none --no-info --color=16'})<cr>
 ### }}}
 ###  Theme  {{{
 hi ColorColumn  ctermbg=167  ctermfg=NONE cterm=NONE guibg=#d75f5f guifg=NONE    gui=NONE

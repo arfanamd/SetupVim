@@ -528,13 +528,13 @@ hi def link cCppOutIf2		cCppOut
 hi def link cCppOut		Comment
 
 "----- c/c++ edited syntax -----" {{{
-hi cComment		guifg=#80a0ff cterm=none
-hi cConstant		guifg=#ffa0a0 cterm=none
-hi cStatement		guifg=#ffff87 cterm=none
-hi cPreProc		guifg=#87afd7 cterm=none
-hi cType		guifg=#b2f582 cterm=none
-hi cSpecial		guifg=#eeeeee cterm=none
-hi cStructure		guifg=#4afcbf cterm=none
+hi cComment   ctermfg=068  ctermbg=NONE cterm=BOLD guifg=#5f87d7 guibg=NONE gui=BOLD
+hi cConstant  ctermfg=217  ctermbg=NONE cterm=NONE guifg=#ffafaf guibg=NONE gui=NONE
+hi cStatement ctermfg=011  ctermbg=NONE cterm=NONE guifg=#ffff60 guibg=NONE gui=NONE
+hi cPreProc   ctermfg=081  ctermbg=NONE cterm=NONE guifg=#ff80ff guibg=NONE gui=NONE
+hi cType      ctermfg=121  ctermbg=NONE cterm=NONE guifg=#60ff60 guibg=NONE gui=NONE
+hi cSpecial   ctermfg=224  ctermbg=NONE cterm=NONE guifg=#ffdfdf guibg=NONE gui=NONE
+hi cStructure ctermfg=049  ctermbg=NONE cterm=NONE guifg=#00ffaf guibg=NONE gui=NONE
 
 hi link cConditional		cStatement
 hi link cDefine			cPreProc
