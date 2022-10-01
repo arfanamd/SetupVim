@@ -12,6 +12,18 @@ elseif exists("b:current_syntax")
 	finish
 endif
 
+" Termux properties {{{
+" Rust option abbreviations.
+iabbrev <buffer> _unused #![allow(dead_code)]
+
+" Optional make/compiler program setup.
+"   "make" command have a bug on termux while opening Quickfix file.
+"   If you insist to use "make", uncomment makeprg.
+" set makeprg=rustc\ -C\ prefer-dynamic\ -o\ rs.out\ %\ &&\ termux-elf-cleaner\ rs.out
+"   Or you can walk in a fine line through my way, call the compiler
+"   directly with "system" and pass all stdout & stderr to Quickfix file.
+nnoremap <buffer> ,mk :cexpr system('rustc -C prefer-dynamic --error-format short -o rs.out '.expand("%").' && termux-elf-cleaner rs.out')<CR>
+" }}}
 " Syntax definitions {{{1
 " Basic keywords {{{2
 syn keyword   rustConditional match if else
@@ -211,16 +223,16 @@ syn keyword rustTodo contained TODO FIXME XXX NB NOTE
 syn region rustFoldBraces start="{" end="}" transparent fold
 
 " Rust edit highlighting {{{1
-hi rustStructure     guifg=#4afcbf cterm=none
-hi rustUnion         guifg=#4afcbf cterm=none
-hi rustFuncName      guifg=#87ffff cterm=none
-hi rustFuncCall      guifg=#87ffff cterm=bold
-hi rustType          guifg=#b2f582 cterm=none
-hi rustSigil         cterm=italic,bold
-hi rustModPathSep    cterm=none
-hi rustIdentifier    cterm=none
+hi rustStructure     ctermfg=049  ctermbg=NONE cterm=NONE guifg=#00ffaf guibg=NONE gui=NONE
+hi rustType          ctermfg=121  ctermbg=NONE cterm=NONE guifg=#60ff60 guibg=NONE gui=NONE
+hi rustIdentifier    ctermfg=081  ctermbg=NONE cterm=NONE guifg=#ff80ff guibg=NONE gui=NONE
 
+hi rustSigil         cterm=ITALIC,BOLD
+
+hi def link rustModPathSep    Delimiter
 hi def link rustSelf          rustSigil
+hi def link rustUnion         rustStructure
+hi def link rustMacro         Function
 " }}}
 " Default highlighting {{{1
 hi def link rustDecNumber       rustNumber
@@ -269,7 +281,6 @@ hi def link rustCommentBlockDoc rustCommentLineDoc
 hi def link rustCommentBlockDocError Error
 hi def link rustAssert        PreCondit
 hi def link rustPanic         PreCondit
-hi def link rustMacro         Macro
 hi def link rustTodo          Todo
 hi def link rustAttribute     PreProc
 hi def link rustDerive        PreProc
