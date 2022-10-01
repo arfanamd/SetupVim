@@ -29,10 +29,10 @@ set showmatch
 # Using my ViWS plugin instead
 set noruler
 set laststatus=2
-set tabline=%!VimWorkSpace()
 # Indentation
 set nosmarttab
 set tabstop=4
+set shiftwidth=4
 # Show indentation
 set list
 set listchars=tab:¦▷∙,nbsp:+
@@ -46,6 +46,8 @@ set directory=/data/data/com.termux/files/home/.vim/swap/
 set path=.,,
 ### }}}
 ###  Map  {{{
+nnoremap Zj o<esc>
+nnoremap Zk O<esc>
 nnoremap tn :tabnew<cr>
 nnoremap ,r :edit<cr>
 nnoremap ,l :tabnext<cr>
@@ -57,7 +59,7 @@ nnoremap ,b :ls<cr>:buff
 nnoremap ,q :confirm q<cr>
 nnoremap ,Q :confirm qa<cr>
 nnoremap <silent> <F2> mp:let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>'pzz
-nnoremap <silent> <F3> :call fzf#run({'sink':'.!cat', 'source':'find $HOME/.vim/skeleton/*', 'down':'20%', 'options':'-e --layout=reverse-list --border=none --no-info --color=16'})<cr>
+nnoremap <silent> <F3> :call fzf#run({'sink':'.!cat', 'source':'ls -1 $HOME/.vim/skeleton/', 'down':'20%', 'options':'-e --layout=reverse-list --border=none --no-info --color=16'})<cr>
 ### }}}
 ###  Theme  {{{
 hi ColorColumn  ctermbg=167  ctermfg=NONE cterm=NONE guibg=#d75f5f guifg=NONE    gui=NONE
@@ -82,6 +84,9 @@ hi Search       ctermbg=003  ctermfg=237  cterm=NONE guibg=#d8bd50 guifg=#3a3a3a
 hi SpecialKey   ctermbg=NONE ctermfg=250  cterm=NONE guibg=NONE    guifg=#bcbcbc gui=NONE
 hi WarningMsg   ctermbg=NONE ctermfg=003  cterm=NONE guibg=NONE    guifg=#d85050 gui=NONE
 hi WildMenu     ctermbg=037  ctermfg=237  cterm=BOLD guibg=#00afaf guifg=#3a3a3a gui=BOLD
+
+hi DiffAdd      ctermbg=136  ctermfg=NONE cterm=NONE guibg=#af8700 guifg=NONE    gui=NONE
+hi DiffText     ctermbg=124  ctermfg=NONE cterm=NONE guibg=#af0000 guifg=NONE    gui=NONE
 
 hi Visual       ctermbg=000  cterm=REVERSE guibg=#000000 gui=REVERSE
 hi Todo         ctermbg=NONE ctermfg=011 cterm=UNDERLINE guibg=NONE guifg=#ffdf5f gui=UNDERLINE
