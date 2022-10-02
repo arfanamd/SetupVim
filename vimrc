@@ -29,6 +29,7 @@ set showmatch
 # Using my ViWS plugin instead
 set noruler
 set laststatus=2
+set tabline=%!VimWorkSpace()
 # Indentation
 set nosmarttab
 set tabstop=4
