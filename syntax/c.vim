@@ -38,7 +38,7 @@ set path+=/data/data/com.termux/files/usr/include
 " set makeprg=gcc\ -Wall\ -Werror\ %\ &&\ termux-elf-cleaner\ a.out
 "   Or you can walk in a fine line through my way, call the compiler
 "   directly with "system" and pass all stdout & stderr to Quickfix file.
-nnoremap <buffer> ,mk :cexpr system('gcc -Werror -Wall -Wextra -Wconversion -Wshadow -Wpedantic -fsanitize=undefined,address -std=c17 '.expand("%").' && termux-elf-cleaner a.out')<CR>
+nnoremap <buffer> ,mk :cexpr system('gcc -Werror -Wall -Wextra -Wconversion -Wshadow -Wpedantic -std=c17 '.expand("%").' && termux-elf-cleaner a.out')<CR>
 " }}}
 
 " A bunch of useful C keywords

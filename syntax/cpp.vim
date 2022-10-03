@@ -31,7 +31,7 @@ set path+=/data/data/com.termux/files/usr/include/c++/v1
 " set makeprg=g++\ -Wall\ -Werror\ %\ &&\ termux-elf-cleaner\ a.out
 "   Or you can walk in a fine line through my way, call the compiler
 "   directly with "system" and pass all stdout & stderr to Quickfix file.
-nnoremap <buffer> ,mk :cexpr system('g++ -Werror -Wall -Wextra -Wconversion -Wshadow -Wpedantic -fsanitize=undefined,address -std=c++20 '.expand("%").' && termux-elf-cleaner a.out')<CR>
+nnoremap <buffer> ,mk :cexpr system('g++ -Werror -Wall -Wextra -Wconversion -Wshadow -Wpedantic -std=c++20 '.expand("%").' && termux-elf-cleaner a.out')<CR>
 
 " Syntax highlight user define
 syn match cppUsrScope		"::"

@@ -14,7 +14,8 @@ endif
 
 " Termux properties {{{
 " Rust option abbreviations.
-iabbrev <buffer> _unused #![allow(dead_code)]
+iabbrev <buffer> _unused #![allow(unused_variables)]
+iabbrev <buffer> _deadco #![allow(dead_code)]
 
 " Optional make/compiler program setup.
 "   "make" command have a bug on termux while opening Quickfix file.
