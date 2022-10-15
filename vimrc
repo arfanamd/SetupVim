@@ -7,6 +7,9 @@ set nocompatible
 set background=dark
 # Increase productivity while editing
 set relativenumber
+# cindent over autoindent
+set noautoindent
+set cindent
 # I prefer single tab rather than 4 spaces
 set noexpandtab
 # Look & Feel
@@ -18,6 +21,10 @@ set textwidth=71
 set numberwidth=4
 set colorcolumn=-4
 set history=50
+# Two seconds for keymap & a tenth of a second for key code.
+set timeout
+set timeoutlen=2000
+set ttimeoutlen=100
 # Command completion
 set wildmenu
 # Ignore these types of file in completion
