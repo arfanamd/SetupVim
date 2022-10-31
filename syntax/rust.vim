@@ -226,7 +226,6 @@ syn region rustFoldBraces start="{" end="}" transparent fold
 " Rust edit highlighting {{{1
 hi rustStructure     ctermfg=049  ctermbg=NONE cterm=NONE guifg=#00ffaf guibg=NONE gui=NONE
 hi rustType          ctermfg=121  ctermbg=NONE cterm=NONE guifg=#60ff60 guibg=NONE gui=NONE
-hi rustIdentifier    ctermfg=081  ctermbg=NONE cterm=NONE guifg=#ff80ff guibg=NONE gui=NONE
 
 hi rustSigil         cterm=ITALIC,BOLD
 
@@ -243,6 +242,7 @@ hi def link rustBinNumber       rustNumber
 hi def link rustIdentifierPrime rustIdentifier
 hi def link rustTrait           rustType
 hi def link rustDeriveTrait     rustTrait
+hi def link rustIdentifier      Normal
 
 hi def link rustMacroRepeatCount   rustMacroRepeatDelimiters
 hi def link rustMacroRepeatDelimiters   Macro
