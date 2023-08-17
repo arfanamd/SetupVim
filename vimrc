@@ -27,6 +27,7 @@ set timeoutlen=2000
 set ttimeoutlen=100
 # Command completion
 set wildmenu
+set wildmode=longest,list,full
 # Ignore these types of file in completion
 set wildignore=*.o,*.so,*.jpg,*.png,*.mp3,*.mp4
 # Sometimes I forget
@@ -66,6 +67,9 @@ nnoremap ,w :up<cr>
 nnoremap ,b :ls<cr>:buff 
 nnoremap ,q :confirm q<cr>
 nnoremap ,Q :confirm qa<cr>
+nnoremap ,m :call matchadd('Visual', '\%'.line('.').'l')<CR>
+nnoremap ,M :call clearmatches()<CR>
+# column -t
 nnoremap <silent> <F2> mp:let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>'pzz
 nnoremap <silent> <F3> :call fzf#run({'sink':'.!cat', 'source':'ls -1 $HOME/.vim/skeleton/', 'down':'20%', 'options':'-e --layout=reverse-list --border=none --no-info --color=16'})<cr>
 ### }}}
