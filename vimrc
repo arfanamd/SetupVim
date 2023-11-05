@@ -7,17 +7,15 @@ set nocompatible
 set background=dark
 # Increase productivity while editing
 set relativenumber
-# cindent over autoindent
-set noautoindent
-set cindent
-# I prefer single tab rather than 4 spaces
+# Follow the indentation from previous line
+set autoindent
+# I prefer single tab rather than 4 spaces; save more bytes
 set noexpandtab
 # Look & Feel
 set nowrap
 set cursorline
 set sidescrolloff=3
 set scrolloff=5
-set textwidth=71
 set numberwidth=4
 set colorcolumn=-4
 set history=50
@@ -44,7 +42,7 @@ set tabstop=4
 set shiftwidth=4
 # Show indentation
 set list
-set listchars=tab:¦▷∙,nbsp:+
+set listchars=tab:\¦\ ,nbsp:+
 # Folding block
 set foldmethod=marker
 # Show help in full screen
@@ -71,7 +69,7 @@ nnoremap ,m :call matchadd('Visual', '\%'.line('.').'l')<CR>
 nnoremap ,M :call clearmatches()<CR>
 # column -t
 nnoremap <silent> <F2> mp:let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>'pzz
-nnoremap <silent> <F3> :call fzf#run({'sink':'.!cat', 'source':'ls -1 $HOME/.vim/skeleton/', 'down':'20%', 'options':'-e --layout=reverse-list --border=none --no-info --color=16'})<cr>
+nnoremap <silent> <F3> :call fzf#run({'sink':'r', 'source':'find ~/.vim/skeleton -type f', 'down':'20%', 'options':'-e --layout=reverse-list --border=none --no-info --color=16'})<cr>
 ### }}}
 ###  Theme  {{{
 hi ColorColumn  ctermbg=167  ctermfg=NONE cterm=NONE guibg=#d75f5f guifg=NONE    gui=NONE
