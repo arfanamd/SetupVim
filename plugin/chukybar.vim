@@ -2,7 +2,7 @@ vim9script
 # --------------------------------------------------------------
 #  Plugin name:   Chukybar
 #  Maintainer:    arfanamd
-#  Version:       1.0.6
+#  Version:       1.0.7
 #
 #  License:
 #  Distributed under the same terms as Vim itself.
@@ -11,31 +11,27 @@ vim9script
 # --------------------------------------------------------------
 
 # Color profile for dark background
-hi cbNameField ctermbg=237  ctermfg=254  cterm=BOLD  guibg=#3a3a3a  guifg=#e4e4e4  gui=BOLD
-hi cbSepIcn1   ctermbg=237  ctermfg=037  cterm=BOLD  guibg=#3a3a3a  guifg=#00afaf  gui=BOLD
-hi cbLineSize  ctermbg=037  ctermfg=237  cterm=BOLD  guibg=#00afaf  guifg=#3a3a3a  gui=BOLD
-hi cbSepIcn2   ctermbg=037  ctermfg=031  cterm=BOLD  guibg=#00afaf  guifg=#0087af  gui=BOLD
-hi cbCursorPos ctermbg=031  ctermfg=254  cterm=BOLD  guibg=#0087af  guifg=#e4e4e4  gui=BOLD
-hi cbSepIcn3   ctermbg=031  ctermfg=237  cterm=BOLD  guibg=#0087af  guifg=#3a3a3a  gui=BOLD
-hi cbFileType  ctermbg=237  ctermfg=078  cterm=BOLD  guibg=#3a3a3a  guifg=#5fd787  gui=BOLD
-hi cbHelpMark  ctermbg=079  ctermfg=237  cterm=BOLD  guibg=#5fd7af  guifg=#3a3a3a  gui=BOLD
-hi cbQuickfix  ctermbg=167  ctermfg=254  cterm=BOLD  guibg=#d75f5f  guifg=#e4e4e4  gui=BOLD
+hi cbFilename  ctermbg=008  ctermfg=015  cterm=BOLD
+hi cbBuffprop  ctermbg=004  ctermfg=015  cterm=BOLD
+hi cbLinecpos  ctermbg=012  ctermfg=000  cterm=BOLD
+hi cbFiletype  ctermbg=008  ctermfg=002  cterm=BOLD
+hi cbHelpbuff  ctermbg=002  ctermfg=000  cterm=NONE
+hi cbQuickfix  ctermbg=001  ctermfg=007  cterm=BOLD
 
 # XXX: This plugin uses couple of Unicode characters.  Some of
 #      them might not work on your end, it depend on the font
-#      that you're using.
+#      you're using.
 
 def g:Activebuf(): string
 	var barline: string
 
-	barline ..= "%#Normal# %#cbNameField# %<%f"
+	barline ..= "%#Normal# %#cbFilename# %<%f"
 	barline ..= &modified == true ? "+ " : " "
-	barline ..= "%r%h%= "
-	barline ..= "%#cbSepIcn1#%#cbLineSize# %L:%P "
-	barline ..= "%#cbSepIcn2#%#cbCursorPos# ☰ %l:%c "
-	barline ..= "%#cbSepIcn3#◀%#cbFileType# "
-	barline ..= &filetype == "" ? "-" : "%Y"
-	barline ..= " %#Normal# "
+	barline ..= "%r%h%=%#cbFiletype#"
+	barline ..= &filetype == "" ? "- " : "%Y "
+	barline ..= "%#cbBuffprop# %L:%P "
+	barline ..= "%#cbLinecpos# ☰ %l:%v "
+	barline ..= "%#cbFilename# %{&ff} %#Normal#"
 
 	return barline
 enddef
@@ -43,10 +39,10 @@ enddef
 def g:Inactivebuf(): string
 	var barline: string
 
-	barline ..= "%#Normal# %#cbNameField# %<%f"
+	barline ..= "%#Normal# %#cbFilename# %<%f"
 	barline ..= &modified == true ? "+ " : " "
 	barline ..= " %=[HOLDED]"
-	barline ..= " %#Normal#  "
+	barline ..= " %#Normal# "
 
 	return barline
 enddef
@@ -54,7 +50,7 @@ enddef
 def g:Quickfixbuf(): string
 	var barline: string
 
-	barline ..= "%#Normal# %#cbNameField# QuickFix Debug Report "
+	barline ..= "%#Normal# %#cbFilename# QuickFix Debug Report "
 	barline ..= "%=%#cbQuickfix# %l report %#Normal# "
 
 	return barline
@@ -63,8 +59,8 @@ enddef
 def g:Helppagebuf(): string
 	var barline: string
 
-	barline ..= "%#Normal# %#cbHelpMark# [HELP] "
-	barline ..= "%#cbNameField#  %<%f  %=  %P  %L "
+	barline ..= "%#Normal# %#cbHelpbuff# [HELP] "
+	barline ..= "%#cbFilename#  %<%f  %=  %P  %L "
 	barline ..= "%#Normal# "
 
 	return barline
