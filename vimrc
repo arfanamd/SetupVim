@@ -9,6 +9,9 @@ set background=dark
 set relativenumber
 # Follow the indentation from previous line
 set autoindent
+set cindent
+# Immediately show search result
+set incsearch
 # I prefer single tab rather than 4 spaces; save more bytes
 set noexpandtab
 # Look & Feel
@@ -65,38 +68,34 @@ nnoremap ,w :up<cr>
 nnoremap ,b :ls<cr>:buff 
 nnoremap ,q :confirm q<cr>
 nnoremap ,Q :confirm qa<cr>
-nnoremap ,m :call matchadd('Visual', '\%'.line('.').'l')<CR>
-nnoremap ,M :call clearmatches()<CR>
-# column -t
 nnoremap <silent> <F2> mp:let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>'pzz
 nnoremap <silent> <F3> :call fzf#run({'sink':'r', 'source':'find ~/.vim/skeleton -type f', 'down':'20%', 'options':'-e --layout=reverse-list --border=none --no-info --color=16'})<cr>
 ### }}}
 ###  Theme  {{{
-hi ColorColumn  ctermbg=167  ctermfg=NONE cterm=NONE guibg=#d75f5f guifg=NONE    gui=NONE
-hi Comment      ctermbg=NONE ctermfg=068  cterm=BOLD guibg=NONE    guifg=#5f87d7 gui=BOLD
-hi Constant     ctermbg=NONE ctermfg=217  cterm=NONE guibg=NONE    guifg=#ffafaf gui=NONE
-hi CursorLine   ctermbg=235  ctermfg=NONE cterm=NONE guibg=#262626 guifg=NONE    gui=NONE
-hi CursorLineNr ctermbg=237  ctermfg=254  cterm=BOLD guibg=#3a3a3a guifg=#e4e4e4 gui=BOLD
-hi Directory    ctermbg=NONE ctermfg=004  cterm=NONE guibg=NONE    guifg=#65a0d5 gui=NONE
-hi ErrorMsg     ctermbg=001  ctermfg=254  cterm=NONE guibg=#d85050 guifg=#e4e4e4 gui=NONE
-hi Folded       ctermbg=237  ctermfg=NONE cterm=NONE guibg=#3a3a3a guifg=NONE    gui=NONE
-hi IncSearch    ctermbg=254  ctermfg=237  cterm=NONE guibg=#e4e4e4 guifg=#3a3a3a gui=NONE
-hi LineNr       ctermbg=NONE ctermfg=250  cterm=NONE guibg=NONE    guifg=#bcbcbc gui=NONE
-hi MatchParen   ctermbg=NONE ctermfg=205  cterm=BOLD guibg=NONE    guifg=#ff5faf gui=BOLD
-hi ModeMsg      ctermbg=NONE ctermfg=254  cterm=NONE guibg=NONE    guifg=#e4e4e4 gui=NONE
-hi MoreMsg      ctermbg=NONE ctermfg=002  cterm=NONE guibg=NONE    guifg=#69c076 gui=NONE
-hi NonText      ctermbg=NONE ctermfg=250  cterm=NONE guibg=NONE    guifg=#bcbcbc gui=NONE
-hi PMenuSel     ctermbg=068  ctermfg=254  cterm=BOLD guibg=#5f87d7 guifg=#e4e4e4 gui=BOLD
-hi Pmenu        ctermbg=250  ctermfg=237  cterm=NONE guibg=#bcbcbc guifg=#3a3a3a gui=NONE
-hi Question     ctermbg=NONE ctermfg=002  cterm=NONE guibg=NONE    guifg=#69c076 gui=NONE
-hi Question     ctermbg=NONE ctermfg=254  cterm=NONE guibg=NONE    guifg=#e4e4e4 gui=NONE
-hi Search       ctermbg=003  ctermfg=237  cterm=NONE guibg=#d8bd50 guifg=#3a3a3a gui=NONE
-hi SpecialKey   ctermbg=NONE ctermfg=250  cterm=NONE guibg=NONE    guifg=#bcbcbc gui=NONE
-hi WarningMsg   ctermbg=NONE ctermfg=003  cterm=NONE guibg=NONE    guifg=#d85050 gui=NONE
-hi WildMenu     ctermbg=037  ctermfg=237  cterm=BOLD guibg=#00afaf guifg=#3a3a3a gui=BOLD
+hi ColorColumn  ctermbg=001  ctermfg=NONE cterm=NONE
+hi Comment      ctermbg=NONE ctermfg=004  cterm=BOLD
+hi Constant     ctermbg=NONE ctermfg=003  cterm=NONE
+hi CursorLine   ctermbg=000  ctermfg=NONE cterm=NONE
+hi CursorLineNr ctermbg=008  ctermfg=015  cterm=BOLD
+hi Directory    ctermbg=NONE ctermfg=004  cterm=NONE
+hi ErrorMsg     ctermbg=001  ctermfg=015  cterm=NONE
+hi Folded       ctermbg=008  ctermfg=NONE cterm=NONE
+hi IncSearch    ctermbg=015  ctermfg=000  cterm=NONE
+hi LineNr       ctermbg=NONE ctermfg=250  cterm=NONE
+hi MatchParen   ctermbg=NONE ctermfg=205  cterm=BOLD
+hi ModeMsg      ctermbg=NONE ctermfg=015  cterm=NONE
+hi MoreMsg      ctermbg=NONE ctermfg=002  cterm=NONE
+hi NonText      ctermbg=NONE ctermfg=250  cterm=NONE
+hi PMenuSel     ctermbg=004  ctermfg=015  cterm=BOLD
+hi Pmenu        ctermbg=012  ctermfg=000  cterm=NONE
+hi Question     ctermbg=NONE ctermfg=007  cterm=NONE
+hi Search       ctermbg=003  ctermfg=237  cterm=NONE
+hi SpecialKey   ctermbg=NONE ctermfg=250  cterm=NONE
+hi WarningMsg   ctermbg=NONE ctermfg=003  cterm=NONE
+hi WildMenu     ctermbg=008  ctermfg=007  cterm=BOLD
 
-hi DiffAdd      ctermbg=136  ctermfg=NONE cterm=NONE guibg=#af8700 guifg=NONE    gui=NONE
-hi DiffText     ctermbg=124  ctermfg=NONE cterm=NONE guibg=#af0000 guifg=NONE    gui=NONE
+hi DiffAdd      ctermbg=136  ctermfg=NONE cterm=NONE
+hi DiffText     ctermbg=124  ctermfg=NONE cterm=NONE
 
 hi Visual       ctermbg=000  cterm=REVERSE guibg=#000000 gui=REVERSE
 hi Todo         ctermbg=NONE ctermfg=011 cterm=UNDERLINE guibg=NONE guifg=#ffdf5f gui=UNDERLINE
