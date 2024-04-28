@@ -55,6 +55,13 @@ set directory=/data/data/com.termux/files/home/.vim/swap/
 # Search path
 set path=.,,
 ### }}}
+###  Netrw {{{
+g:netrw_banner      = 0
+g:netrw_dirhistmax  = 0
+g:netrw_list_hide   = '.*\.png,.*\.jpg,.*\.jpeg,.*\.svg,.*\.mp3,.*\.mp4'
+g:netrw_mousemaps   = 0
+g:netrw_use_noswf   = 1
+### }}}
 ###  Map  {{{
 nnoremap Zj o<esc>
 nnoremap Zk O<esc>
@@ -64,6 +71,7 @@ nnoremap ,l :tabnext<cr>
 nnoremap ,h :tabprevious<cr>
 nnoremap ,j :wincmd j<cr>
 nnoremap ,k :wincmd k<cr>
+nnoremap ,o :35%Lexplore<cr>
 nnoremap ,w :up<cr>
 nnoremap ,b :ls<cr>:buff 
 nnoremap ,q :confirm q<cr>
