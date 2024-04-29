@@ -76,8 +76,8 @@ nnoremap ,w :up<cr>
 nnoremap ,b :ls<cr>:buff 
 nnoremap ,q :confirm q<cr>
 nnoremap ,Q :confirm qa<cr>
-nnoremap <silent> <F2> mp:let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>'pzz
-nnoremap <silent> <F3> :call fzf#run({'sink':'r', 'source':'find ~/.vim/skeleton -type f', 'down':'20%', 'options':'-e --layout=reverse-list --border=none --no-info --color=16'})<cr>
+nnoremap <silent> <f2> mp:let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar><cr>'pzz
+nnoremap <silent> <f3> :call fzf#run(fzf#wrap({'sink':'0read', 'source':'find ~/.vim/skeleton/ -mindepth 1 -maxdepth 1', 'down':'20%', 'options':'-e --layout=reverse-list --no-border --no-info --color=16'}))<cr>
 ### }}}
 ###  Theme  {{{
 hi ColorColumn  ctermbg=001  ctermfg=NONE cterm=NONE
