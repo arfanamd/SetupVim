@@ -2,23 +2,32 @@ vim9script
 # --------------------------------------------------------------
 # Plugin name:   ViWS
 # Maintainer:    arfanamd
-# Version:       v1.0.2
+# Version:       v1.1.0
 #
 # License:
 # Distributed under the same terms as Vim itself.
-# Copyright (c) 2022 arfanamd and contributors.
+# Copyright (c) 2024 arfanamd and contributors.
 # See ":help license" in Vim.
 # --------------------------------------------------------------
 
-# Color profile
+# Only load ViWS once
+if exists("g:viws_loaded")
+	finish
+endif
+
+g:viws_loaded = true
+
+# Clear default Vim theme for tabline
 hi clear TabLine
 hi clear TabLineSel
 hi clear TabLineFill
-hi TabLine     ctermbg=NONE  ctermfg=254  cterm=NONE  guibg=NONE     guifg=#e4e4e4  gui=NONE
-hi TabLineSel  ctermbg=250   ctermfg=237  cterm=BOLD  guibg=#bcbcbc  guifg=#3a3a3a  gui=BOLD
-hi TabLineFill ctermbg=NONE  ctermfg=078  cterm=BOLD  guibg=NONE     guifg=#5fd787  gui=BOLD
 
-# Global options
+# Define ViWS theme for tabline
+hi TabLine     ctermbg=NONE  ctermfg=254  cterm=NONE
+hi TabLineSel  ctermbg=250   ctermfg=237  cterm=BOLD
+hi TabLineFill ctermbg=NONE  ctermfg=078  cterm=BOLD
+
+# ViWS global options
 g:viws_IconEndDisplay     = ""
 g:viws_IconMultiWindow    = "M"
 g:viws_IconModifBuffer    = "+"
@@ -26,6 +35,8 @@ g:viws_IconTrimFileName   = "<"
 g:viws_NameDisplayWidth   = 35
 g:viws_WorkSpaceSeparator = "|"
 
+# Add padding (basically just bunch of spaces) before file name
+# to fill up g:viws_NameDisplayWidth value
 def Padding(length: number): string
 	var test: string = ""
 	var gap: number  = g:viws_NameDisplayWidth - length
@@ -39,6 +50,7 @@ def Padding(length: number): string
 	return test
 enddef
 
+# Render the ViWS
 def g:VimWorkSpace(): string
 	var contents: string = ""
 	var currIndex: number = tabpagenr()
@@ -135,4 +147,4 @@ def g:VimWorkSpace(): string
 	return contents
 enddef
 
-## vim:ts=2
+# vim:ft=vim:sw=2:ts=2
