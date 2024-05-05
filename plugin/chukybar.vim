@@ -10,6 +10,13 @@ vim9script
 #  See ":help license" in Vim.
 # --------------------------------------------------------------
 
+# Only load chukybar once
+if exists("g:chukybar_loaded")
+	finish
+endif
+
+g:chukybar_loaded = true
+
 # Color profile for dark background
 hi cbFilename  ctermbg=008  ctermfg=015  cterm=BOLD
 hi cbBuffprop  ctermbg=004  ctermfg=015  cterm=BOLD
@@ -21,6 +28,8 @@ hi cbQuickfix  ctermbg=001  ctermfg=007  cterm=BOLD
 # XXX: This plugin uses couple of Unicode characters.  Some of
 #      them might not work on your end, it depend on the font
 #      you're using.
+#
+# TODO: Add support for fzf & netrw buffer
 
 def g:Activebuf(): string
 	var barline: string
@@ -66,15 +75,14 @@ def g:Helppagebuf(): string
 	return barline
 enddef
 
-augroup Statusbar
-	autocmd!
-	# TODO: fix statusline for text file.
+augroup Chukybar
+	# statusline for QuickFix buffer
 	autocmd FileType qf setlocal statusline=%!Quickfixbuf()
+	# statusline for Vim Help buffer
 	autocmd FileType help setlocal statusline=%!Helppagebuf()
-	autocmd BufAdd,BufEnter,WinEnter,FileType text setlocal statusline=%!Activebuf()
-	#autocmd WinLeave,FileType text setlocal statusline=%!Inactivebuf()
-	autocmd BufAdd,BufLeave,WinLeave \w*[^t],\d*[^t],\w*.[^t]*,\d*.[^t]* setlocal statusline=%!Inactivebuf()
-	autocmd BufAdd,BufEnter,WinEnter \w*[^t],\d*[^t],\w*.[^t]*,\d*.[^t]* setlocal statusline=%!Activebuf()
+	# statusline for other file buffer
+	autocmd BufWinEnter \w*.* setlocal statusline=%!Activebuf()
+	autocmd BufWinLeave \w*.* setlocal statusline=%!Inactivebuf()
 augroup END
 
-## vim:ts=2
+# vim:ft=vim:sw=2:ts=2
