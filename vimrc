@@ -73,18 +73,48 @@ nnoremap ,j :wincmd j<cr>
 nnoremap ,k :wincmd k<cr>
 nnoremap ,o :35%Lexplore<cr>
 nnoremap ,w :up<cr>
-nnoremap ,b :ls<cr>:buff 
+nnoremap ,b :ls<cr>:buff<space>
 nnoremap ,q :confirm q<cr>
 nnoremap ,Q :confirm qa<cr>
 nnoremap <silent> <f2> mp:let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar><cr>'pzz
 nnoremap <silent> <f3> :call fzf#run(fzf#wrap({'sink':'0read', 'source':'find ~/.vim/skeleton/ -mindepth 1 -maxdepth 1', 'down':'20%', 'options':'-e --layout=reverse-list --no-border --no-info --color=16'}))<cr>
 ### }}}
 ###  Theme  {{{
+# Clear Vim default theme
+hi clear ColorColumn
+hi clear Comment
+hi clear Constant
+hi clear CursorLine
+hi clear CursorLineNr
+hi clear DiffAdd
+hi clear DiffText
+hi clear Directory
+hi clear ErrorMsg
+hi clear Folded
+hi clear IncSearch
+hi clear LineNr
+hi clear MatchParen
+hi clear ModeMsg
+hi clear MoreMsg
+hi clear NonText
+hi clear PMenuSel
+hi clear Pmenu
+hi clear Question
+hi clear Search
+hi clear SpecialKey
+hi clear Todo
+hi clear Visual
+hi clear WarningMsg
+hi clear WildMenu
+
+# Define my theme
 hi ColorColumn  ctermbg=001  ctermfg=NONE cterm=NONE
 hi Comment      ctermbg=NONE ctermfg=004  cterm=BOLD
 hi Constant     ctermbg=NONE ctermfg=003  cterm=NONE
 hi CursorLine   ctermbg=000  ctermfg=NONE cterm=NONE
 hi CursorLineNr ctermbg=008  ctermfg=015  cterm=BOLD
+hi DiffAdd      ctermbg=136  ctermfg=NONE cterm=NONE
+hi DiffText     ctermbg=124  ctermfg=NONE cterm=NONE
 hi Directory    ctermbg=NONE ctermfg=004  cterm=NONE
 hi ErrorMsg     ctermbg=001  ctermfg=015  cterm=NONE
 hi Folded       ctermbg=008  ctermfg=NONE cterm=NONE
@@ -99,15 +129,21 @@ hi Pmenu        ctermbg=012  ctermfg=000  cterm=NONE
 hi Question     ctermbg=NONE ctermfg=007  cterm=NONE
 hi Search       ctermbg=003  ctermfg=237  cterm=NONE
 hi SpecialKey   ctermbg=NONE ctermfg=250  cterm=NONE
+hi Todo                      ctermfg=011  cterm=UNDERLINE
+hi Visual                                 cterm=REVERSE
 hi WarningMsg   ctermbg=NONE ctermfg=003  cterm=NONE
 hi WildMenu     ctermbg=008  ctermfg=007  cterm=BOLD
 
-hi DiffAdd      ctermbg=136  ctermfg=NONE cterm=NONE
-hi DiffText     ctermbg=124  ctermfg=NONE cterm=NONE
-
-hi Visual       ctermbg=000  cterm=REVERSE guibg=#000000 gui=REVERSE
-hi Todo         ctermbg=NONE ctermfg=011 cterm=UNDERLINE guibg=NONE guifg=#ffdf5f gui=UNDERLINE
 hi link VertSplit Normal
 hi link CurSearch Search
+### }}}
+###  Autogroup  {{{
+augroup Template
+	autocmd BufNewFile \w*.cpp :0read ~/.vim/skeleton/cpp.template
+	autocmd BufNewFile \w*.sh :0read ~/.vim/skeleton/bash.template
+	autocmd BufNewFile \w*.rs :0read ~/.vim/skeleton/rust.template
+	autocmd BufNewFile \w*.c :0read ~/.vim/skeleton/c.template
+	autocmd BufNewFile Cargo.toml :0read ~/.vim/skeleton/cargo_toml.template
+augroup END
 ### }}}
 ## vim:ft=vim:foldmethod=marker
