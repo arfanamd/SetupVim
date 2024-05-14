@@ -16,29 +16,15 @@ let b:filetype_in_cpp_family = 1
 runtime! syntax/c.vim
 unlet b:current_syntax
 
-" Termux properties {{{
-"
 " C++ abbreviation
 iabbrev <buffer> inclide include
 iabbrev <buffer> coit cout
-
-" Optional path setup
-set path+=/data/data/com.termux/files/usr/include/c++/v1
-
-" Optional make/compiler program setup
-"   "make" command have a bug on termux while opening Quickfix file.
-"   If you insist to use "make", uncomment makeprg.
-" set makeprg=g++\ -Wall\ -Werror\ %\ &&\ termux-elf-cleaner\ a.out
-"   Or you can walk in a fine line through my way, call the compiler
-"   directly with "system" and pass all stdout & stderr to Quickfix file.
-nnoremap <buffer> ,mk :cexpr system('g++ -Werror -Wall -Wextra -Wconversion -Wshadow -Wpedantic -std=c++20 '.expand("%").' && termux-elf-cleaner a.out')<CR>
 
 " Syntax highlight user define
 syn match cppUsrScope		"::"
 syn match cppUsrClass		"\w\+\s*::"
 			\ contains=cppUsrScope
 hi def link cppUsrClass cppStructure
-"}}}
 
 " C++ extensions
 syn keyword cppStatement	new delete this friend using

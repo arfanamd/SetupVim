@@ -12,19 +12,10 @@ elseif exists("b:current_syntax")
 	finish
 endif
 
-" Termux properties {{{
 " Rust option abbreviations.
-iabbrev <buffer> _unused #![allow(unused_variables)]
+iabbrev <buffer> _unused #![allow(unused)]
 iabbrev <buffer> _deadco #![allow(dead_code)]
 
-" Optional make/compiler program setup.
-"   "make" command have a bug on termux while opening Quickfix file.
-"   If you insist to use "make", uncomment makeprg.
-" set makeprg=rustc\ -C\ prefer-dynamic\ -o\ rs.out\ %\ &&\ termux-elf-cleaner\ rs.out
-"   Or you can walk in a fine line through my way, call the compiler
-"   directly with "system" and pass all stdout & stderr to Quickfix file.
-nnoremap <buffer> ,mk :cexpr system('rustc -C prefer-dynamic --error-format short -o rs.out '.expand("%").' && termux-elf-cleaner rs.out')<CR>
-" }}}
 " Syntax definitions {{{1
 " Basic keywords {{{2
 syn keyword   rustConditional match if else

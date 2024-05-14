@@ -24,22 +24,8 @@ if exists("c_autodoc")
   unlet b:current_syntax
 endif
 
-" Termux properties {{{
-"
 " C abbreviation
 iabbrev <buffer> inclide include
-
-" Optional path setup
-set path+=/data/data/com.termux/files/usr/include
-
-" Optional make/compiler program setup
-"   "make" command have a bug on termux while opening Quickfix file.
-"   If you insist to use "make", uncomment makeprg.
-" set makeprg=gcc\ -Wall\ -Werror\ %\ &&\ termux-elf-cleaner\ a.out
-"   Or you can walk in a fine line through my way, call the compiler
-"   directly with "system" and pass all stdout & stderr to Quickfix file.
-nnoremap <buffer> ,mk :cexpr system('gcc -Werror -Wall -Wextra -Wconversion -Wshadow -Wpedantic -std=c17 '.expand("%").' && termux-elf-cleaner a.out')<CR>
-" }}}
 
 " A bunch of useful C keywords
 syn keyword	cStatement	goto break return continue asm

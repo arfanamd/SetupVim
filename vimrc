@@ -145,5 +145,10 @@ augroup Template
 	autocmd BufNewFile \w*.c :0read ~/.vim/skeleton/c.template
 	autocmd BufNewFile Cargo.toml :0read ~/.vim/skeleton/cargo_toml.template
 augroup END
+augroup Compiler
+	autocmd BufEnter \w*.cpp :set makeprg=cc\ -Werror\ -Wextra\ -Wconversion\ -Wshadow\ -Wpedantic\ -std=c++17\ %
+	autocmd BufEnter \w*.rs :set makeprg=rustc\ -C\ prefer-dynamic\ %
+	autocmd BufEnter \w*.c :set makeprg=cc\ -Werror\ -Wextra\ -Wconversion\ -Wshadow\ -Wpedantic\ -std=c17\ %
+augroup END
 ### }}}
 ## vim:ft=vim:foldmethod=marker
