@@ -150,5 +150,9 @@ augroup Compiler
 	autocmd BufEnter \w*.rs :set makeprg=rustc\ -C\ prefer-dynamic\ %
 	autocmd BufEnter \w*.c :set makeprg=cc\ -Werror\ -Wextra\ -Wconversion\ -Wshadow\ -Wpedantic\ -std=c17\ %
 augroup END
+augroup QuickFixWin
+	autocmd QuickFixCmdPre * g:mainbuf = bufnr('%')
+	autocmd QuickFixCmdPost * botright copen 8 | exec ':' .. bufwinnr(g:mainbuf) .. 'wincmd w'
+augroup END
 ### }}}
 ## vim:ft=vim:foldmethod=marker
