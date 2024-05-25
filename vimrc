@@ -152,7 +152,12 @@ augroup Compiler
 augroup END
 augroup QuickFixWin
 	autocmd QuickFixCmdPre * g:mainbuf = bufnr('%')
-	autocmd QuickFixCmdPost * botright copen 8 | exec ':' .. bufwinnr(g:mainbuf) .. 'wincmd w'
+	autocmd QuickFixCmdPost *
+				\ if getqflist({'size': 1})['size'] == 0
+				\ | exec ':cclose'
+				\ | else
+				\ | exec ':copen 8 | :' .. bufwinnr(g:mainbuf) .. 'wincmd w'
+				\ | endif
 augroup END
 ### }}}
 ## vim:ft=vim:foldmethod=marker
