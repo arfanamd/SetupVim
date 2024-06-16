@@ -16,6 +16,32 @@ endif
 iabbrev <buffer> _unused #![allow(unused)]
 iabbrev <buffer> _deadco #![allow(dead_code)]
 
+" Rust cindent configuration {{{1
+setlocal cinoptions=L0,(s,Ws,J1,j1,m1
+setlocal cinkeys=0{,0},!^F,o,O,0[,0],0(,0)
+setlocal cinwords=for,if,else,while,loop,impl,mod,unsafe,trait,struct,enum,fn,extern,macro
+" }}}
+" Rust errorformat {{{1
+	setlocal errorformat=
+		\%-G,
+		\%-Gerror:\ aborting\ %.%#,
+		\%-Gerror:\ Could\ not\ compile\ %.%#,
+		\%Eerror:\ %m,
+		\%Eerror[E%n]:\ %m,
+		\%Wwarning:\ %m,
+		\%Inote:\ %m,
+		\%C\ %#-->\ %f:%l:%c,
+		\%E\ \ left:%m,%C\ right:%m\ %f:%l:%c,%Z,
+		\%-G%\\s%#Downloading%.%#,
+		\%-G%\\s%#Checking%.%#,
+		\%-G%\\s%#Compiling%.%#,
+		\%-G%\\s%#Finished%.%#,
+		\%-G%\\s%#error:\ Could\ not\ compile\ %.%#,
+		\%-G%\\s%#To\ learn\ more\\,%.%#,
+		\%-G%\\s%#For\ more\ information\ about\ this\ error\\,%.%#,
+		\%-Gnote:\ Run\ with\ \`RUST_BACKTRACE=%.%#,
+		\%.%#panicked\ at\ \\'%m\\'\\,\ %f:%l:%c
+" }}}
 " Syntax definitions {{{1
 " Basic keywords {{{2
 syn keyword   rustConditional match if else
